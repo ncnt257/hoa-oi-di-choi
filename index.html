@@ -6,10 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hòa ơi, đi chơiii ☕</title>
     <style>
-        @font-face {
-        font-family: 'ComicSans';
-        src: url('/fonts/ComicSans.ttf') format('truetype');
-        }
+
         * {
             margin: 0;
             padding: 0;
@@ -17,7 +14,7 @@
         }
 
         body {
-            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Marker Felt', 'Chalkboard SE', 'Comic Sans MS', sans-serif;
             background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
             min-height: 100vh;
             display: flex;
@@ -758,7 +755,7 @@
 
             <!-- Message -->
             <div class="message">
-                Mình có <span class="highlight">một đề nghị hơi bất ngờ</span> đây! 🤭<br><br>
+                Đây là <span class="highlight">một chiếc thiệp mời</span> 🤭<br><br>
                 Cùng nhau đi <span class="highlight">chill</span> ở một quán cà hê
                 <span class="highlight">siêu xanh tươi</span> nhé!
                 <span class="dancing-emoji">🌿</span>
@@ -794,7 +791,7 @@
                 <div class="location-title">📍 Về quán này nèee</div>
                 <div class="location-item">
                     <span class="location-emoji">🏠</span>
-                    <span>Quán cà phê siêu xinh xắn, có nhiều tree house</span>
+                    <span>Quán cà phê siêu xinh xắn, có nhiều tree house để leo trèo</span>
                 </div>
                 <div class="location-item">
                     <span class="location-emoji">🌲</span>
@@ -821,7 +818,7 @@
                 <div class="location-title" style="color: #d63031;">📅 Thời gian</div>
                 <div class="location-item">
                     <span class="location-emoji">🗓️</span>
-                    <span>Ngày 3 tháng 11 năm 2025 (Thứ Hai)</span>
+                    <span>Thứ ✌️ ngày 🤟 tháng ☝️☝️</span>
                 </div>
                 <div class="location-item">
                     <span class="location-emoji">🌤️</span>
@@ -849,6 +846,10 @@
                 <div class="question">
                     Vậy là bạn đi chứ? 🥺
                 </div>
+                <div class="loading" style="display: none;">
+                    Chờ tẹo nha...
+                </div>
+                
             </div>
 
             <!-- Buttons -->
@@ -896,11 +897,13 @@
             const avtng = document.querySelector('#avt-ng');
             const avticon = document.querySelector('#avt-icon');
             const question = document.querySelector('.question');
+            const loading = document.querySelector('.loading');
 
             responseDiv.style.display = 'block';
             buttons.style.display = 'none';
             avticon.style.display = 'none';
             question.style.display = 'none';
+            loading.style.display = 'block';
 
             try {
                 // Send response to API
@@ -933,13 +936,14 @@
                             avtng.style.display = 'block';
                             responseDiv.className = 'response pending';
                             responseDiv.innerHTML = '🥺 Cảm ơn Hòa đã phản hồi! 🥺<br><br><small>Lời nhắn đang được gửi đi</small>'
-                            setTimeout(() => {
+                            /*setTimeout(() => {
                                 responseDiv.style.display = 'none';
                                 buttons.style.display = 'flex';
                                 buttons.style.pointerEvents = 'auto';
                                 buttons.style.opacity = '1';
-                            }, 5000);
+                            }, 5000);*/
                         }
+                        loading.style.display = 'none';
                 });
 
          
