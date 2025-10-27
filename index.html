@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hòa ơi, đi chơiii ☕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Hiệu ứng cà phê bay */
+        .floating-coffee {
+            position: absolute;
+            font-size: 2em;
+            animation: floatCoffee 8s infinite ease-in-out;
+            opacity: 0.6;
+        }
+
+        @keyframes floatCoffee {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-30px) rotate(10deg);
+            }
+
+            50% {
+                transform: translateY(0) rotate(-10deg);
+            }
+
+            75% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        /* Cây xanh lắc lư */
+        .tree {
+            position: absolute;
+            font-size: 3em;
+            animation: wiggle 3s infinite;
+        }
+
+        @keyframes wiggle {
+
+            0%,
+            100% {
+                transform: rotate(-5deg);
+            }
+
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+
+        /* Container chính */
+        .invitation-card {
+            background: white;
+            border-radius: 25px;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
+            animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            overflow: hidden;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        /* VỊ TRÍ 1: Ảnh header với hiệu ứng zoom */
+        .header-image {
+            width: 100%;
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: zoomPulse 3s infinite alternate;
+        }
+
+        @keyframes zoomPulse {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .header-sticker {
+            position: absolute;
+            font-size: 4em;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .sticker-1 {
+            top: 20px;
+            right: 20px;
+        }
+
+        .sticker-2 {
+            bottom: 20px;
+            left: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Content */
+        .content {
+            padding: 35px 25px;
+        }
+
+        /* Tên người nhận với hiệu ứng neon */
+        .greeting {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .greeting-text {
+            font-size: 1.1em;
+            color: #666;
+            animation: wave 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes wave {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .name-box {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease infinite;
+            margin: 15px 0;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 3px dashed #ff6b6b;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Emoji nhảy múa */
+        .dancing-emoji {
+            font-size: 3em;
+            display: inline-block;
+            animation: dance 1s infinite;
+        }
+
+        @keyframes dance {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-10px) rotate(-10deg);
+            }
+
+            75% {
+                transform: translateY(-10px) rotate(10deg);
+            }
+        }
+
+        /* Message với hiệu ứng typing */
+        .message {
+            font-size: 1.15em;
+            line-height: 1.7;
+            color: #333;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            animation: wiggle 2s infinite;
+        }
+
+        /* VỊ TRÍ 2: Gallery với hiệu ứng hover vui */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            background: #f0f0f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:first-child {
+            grid-column: span 2;
+            height: 180px;
+        }
+
+        .gallery-item:not(:first-child) {
+            height: 140px;
+        }
+
+        .gallery-item:hover {
+            transform: rotate(-5deg) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 5;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .gallery-text {
+            font-size: 0.4em;
+            margin-top: 5px;
+            color: #999;
+        }
+
+        /* Location info với hiệu ứng lượn sóng */
+        .location-box {
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 25px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-box::before {
+            content: '🌊';
+            position: absolute;
+            font-size: 8em;
+            opacity: 0.1;
+            right: -20px;
+            top: -20px;
+            animation: spin 20s linear infinite;
+        }
+
+        .location-title {
+            font-size: 1.4em;
+            color: #00796b;
+            margin-bottom: 15px;
+            animation: bounce 2s infinite;
+        }
+
+        .location-item {
+            margin: 10px 0;
+            padding: 8px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideInLeft 0.5s ease;
+            transition: transform 0.3s ease;
+        }
+
+        .location-item:hover {
+            transform: translateX(10px);
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .location-emoji {
+            font-size: 1.5em;
+            animation: bounce 1s infinite;
+        }
+
+        /* VỊ TRÍ 3: Avatar với hiệu ứng vui */
+        .personal-invite {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .avatar-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 5px solid #ff6b6b;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            animation: shake 3s infinite;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            10% {
+                transform: rotate(-5deg);
+            }
+
+            20% {
+                transform: rotate(5deg);
+            }
+
+            30% {
+                transform: rotate(-5deg);
+            }
+
+            40% {
+                transform: rotate(5deg);
+            }
+
+            50% {
+                transform: rotate(0deg);
+            }
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Sparkles quanh avatar */
+        .sparkle {
+            position: absolute;
+            font-size: 1.5em;
+            animation: twinkle 1.5s infinite;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .sparkle-1 {
+            top: 0;
+            left: 0;
+            animation-delay: 0s;
+        }
+
+        .sparkle-2 {
+            top: 0;
+            right: 0;
+            animation-delay: 0.3s;
+        }
+
+        .sparkle-3 {
+            bottom: 0;
+            left: 0;
+            animation-delay: 0.6s;
+        }
+
+        .sparkle-4 {
+            bottom: 0;
+            right: 0;
+            animation-delay: 0.9s;
+        }
+
+        /* Nút bấm vui */
+        .question {
+            font-size: 1.2em;
+            margin: 20px 0;
+            animation: wave 1.5s infinite;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.15em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            animation: jello 2s infinite;
+        }
+
+        @keyframes jello {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            30% {
+                transform: scale(1.05) rotate(2deg);
+            }
+
+            60% {
+                transform: scale(0.95) rotate(-2deg);
+            }
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            color: white;
+        }
+
+        .btn:active {
+            transform: scale(0.9);
+        }
+
+        /* Response */
+        .response {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1.1em;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .response.success {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 3px solid #28a745;
+        }
+
+        .response.pending {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 3px solid #ffc107;
+        }
+/* Message Box */
+        .message-box {
+            margin-top: 25px;
+            padding: 25px;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fed6e3 100%);
+            border-radius: 20px;
+            border: 3px dashed #ff6b6b;
+            animation: slideDown 0.5s ease;
+        }
+
+        .message-box-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #d63031;
+            animation: wave 2s ease-in-out infinite;
+        }
+
+        .message-textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ff6b6b;
+            border-radius: 15px;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1em;
+            resize: vertical;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .message-textarea:focus {
+            outline: none;
+            border-color: #d63031;
+            box-shadow: 0 0 15px rgba(255, 107, 107, 0.3);
+            transform: scale(1.02);
+        }
+
+        .btn-send {
+            width: 100%;
+            margin-top: 15px;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.15em;
+            font-weight: bold;
+            cursor: pointer;
+            background: linear-gradient(135deg, #fd79a8 0%, #a29bfe 100%);
+            color: white;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .btn-send:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(253, 121, 168, 0.4);
+        }
+
+        .btn-send:active {
+            transform: scale(0.95);
+        }
+
+        .message-sent {
+            margin-top: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 2px solid #28a745;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: #155724;
+            animation: slideDown 0.5s ease;
+        }
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 0.9em;
+            border-top: 2px dashed #eee;
+        }
+
+        .footer-emoji {
+            display: inline-block;
+            animation: spin 3s linear infinite;
+        }
+
+        /* Guide note */
+        .guide {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 480px) {
+            .name-box {
+                font-size: 2em;
+            }
+
+            .gallery-item:first-child {
+                height: 150px;
+            }
+
+            .gallery-item:not(:first-child) {
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating decorations -->
+    <div class="floating-coffee" style="top: 10%; left: 10%;">☕</div>
+    <div class="floating-coffee" style="top: 20%; right: 15%; animation-delay: 1s;">🍰</div>
+    <div class="floating-coffee" style="bottom: 15%; left: 20%; animation-delay: 2s;">☕</div>
+    <div class="floating-coffee" style="bottom: 25%; right: 10%; animation-delay: 3s;">🥐</div>
+
+    <div class="tree" style="top: 5%; right: 5%;">🌳</div>
+    <div class="tree" style="bottom: 10%; left: 5%; animation-delay: 1.5s;">🌿</div>
+
+    <!-- Main card -->
+    <div class="invitation-card">
+        <!-- VỊ TRÍ 1: HEADER IMAGE -->
+        <div class="header-image">
+            <img src="Hoa.jpg" alt="Header">
+            <div class="header-sticker sticker-1">☕</div>
+            <div class="header-sticker sticker-2">🌱</div>
+        </div>
+
+        <div class="content">
+            <!-- Greeting -->
+            <div class="greeting">
+                <div class="greeting-text">
+                    <span class="dancing-emoji">👋</span>
+                    Xin chàoooo
+                    <span class="dancing-emoji">✨</span>
+                </div>
+                <div class="name-box">HÒA</div>
+            </div>
+
+            <!-- Message -->
+            <div class="message">
+                Mình có <span class="highlight">một đề nghị hơi bất ngờ</span> đây! 🤭<br><br>
+                Cùng nhau đi <span class="highlight">chill</span> ở một quán cà hê
+                <span class="highlight">siêu xanh tươi</span> nhé!
+                <span class="dancing-emoji">🌿</span>
+            </div>  
+
+            <!-- VỊ TRÍ 2: GALLERY -->
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="Map.jpg" alt="Quán">
+                    <div class="gallery-placeholder">
+                        🏡
+                        <div class="gallery-text">Ảnh quán cà phê</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="View.jpg" alt="Cây">
+                    <div class="gallery-placeholder">
+                        🌳
+                        <div class="gallery-text">Cây xanh</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Menu.jpg" alt="Cà phê">
+                    <div class="gallery-placeholder">
+                        ☕
+                        <div class="gallery-text">Đồ uống</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location -->
+            <div class="location-box">
+                <div class="location-title">📍 Về quán này nèee</div>
+                <div class="location-item">
+                    <span class="location-emoji">🏠</span>
+                    <span>Quán cà phê siêu xinh xắn, có nhiều tree house</span>
+                </div>
+                <div class="location-item">
+                    <span class="location-emoji">🌲</span>
+                    <span>Nhiều cây xanh, thư giãn vô cùng</span>
+                </div>
+                <div class="location-item">
+                    <span class="location-emoji">☕</span>
+                    <span>Nước ngon hay không chưa biết, thử mới biết á...<table></table></span>
+                </div>
+                <!-- <div class="location-item">
+                    <span class="location-emoji">😎</span>
+                    <span>Không gian chill phết luôn</span>
+                </div> -->
+                <div class="location-item" style="background: #e3f2fd; border: 2px solid #2196f3;">
+                    <span class="location-emoji">🗺️</span>
+                    <span><a href="https://maps.app.goo.gl/6sKX1RALPKHeQrSV8" target="_blank"
+                            style="color: #1976d2; text-decoration: none; font-weight: bold;">Bản đồ đây nè
+                            →</a></span>
+                </div>
+            </div>
+            <!-- Date & Time -->
+            <div class="location-box"
+                style="background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%); margin-bottom: 15px;">
+                <div class="location-title" style="color: #d63031;">📅 Thời gian</div>
+                <div class="location-item">
+                    <span class="location-emoji">🗓️</span>
+                    <span>Ngày 3 tháng 11 năm 2025 (Thứ Hai)</span>
+                </div>
+                <div class="location-item">
+                    <span class="location-emoji">🌤️</span>
+                    <span>Thời tiết: Mát mẻ hoặc lạnh lẽo ~18°C, trời thu đẹp</span>
+                </div>
+                <div class="location-item">
+                    <span class="location-emoji">👕</span>
+                    <span>Mặc áo khoác dày dày tí là okela nhaaa!</span>
+                </div>
+            </div>
+            <!-- VỊ TRÍ 3: AVATAR -->
+            <div class="personal-invite">
+                <div class="avatar-container">
+                    <div class="avatar">
+                        <img src="avtok.jpg" alt="Avatar" style="display: none;" id="avt-ok">
+                        <img src="avtng.jpg" alt="Avatar" style="display: none;" id="avt-ng">
+                        <span id="avt-icon">🤗</span>
+                    </div>
+                    <div class="sparkle sparkle-1">✨</div>
+                    <div class="sparkle sparkle-2">⭐</div>
+                    <div class="sparkle sparkle-3">💫</div>
+                    <div class="sparkle sparkle-4">✨</div>
+                </div>
+
+                <div class="question">
+                    Vậy là bạn đi chứ? 🥺
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="buttons">
+                <button class="btn btn-yes" onclick="respond('yes')">
+                    ĐI ĐI ĐI! 🎉
+                </button>
+                <button class="btn btn-no" onclick="respond('no')">
+                    Khồng... 
+                </button>
+            </div>
+
+            <!-- Response -->
+            <div id="response" class="response"></div>
+
+            <!-- Message Box -->
+            <div id="messageBox" class="message-box" style="display: none;">
+                <div class="message-box-title">💌 Có gì muốn nhắn nhủ mình không? 🥰</div>
+                <textarea id="userMessage" class="message-textarea" placeholder="Viết đi mình nghe nè... 💭✨" rows="4"></textarea>
+                <button class="btn-send" onclick="sendMessage()">
+                    Gửi lời nhắn 💕
+                </button>
+                <div id="messageSent" class="message-sent" style="display: none;">
+                    ✨ Đã nhận được lời nhắn rồi nè! Cảm ơn bạn nhiềuuuu! 💖
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <span class="footer-emoji">💚</span>
+            Một lời mời được làm bằng cả trái tim
+            <span class="footer-emoji">💚</span>
+        </div>
+    </div>
+
+    <script>
+        const API_ENDPOINT_RESPONSE = 'https://testapi.io/api/itsncnt/hoa-oi-di-choi';
+        const API_ENDPOINT_MESSAGE = 'https://testapi.io/api/itsncnt/hoa-oi-di-choi-message';
+        function respond(type) {
+            const responseDiv = document.getElementById('response');
+            const buttons = document.querySelector('.buttons');
+            const messageBox = document.querySelector('#messageBox');
+            const avtok = document.querySelector('#avt-ok');
+            const avtng = document.querySelector('#avt-ng');
+            const avticon = document.querySelector('#avt-icon');
+            const question = document.querySelector('.question');
+
+            responseDiv.style.display = 'block';
+            buttons.style.display = 'none';
+            avticon.style.display = 'none';
+            question.style.display = 'none';
+
+            try {
+                // Send response to API
+                const response = fetch(API_ENDPOINT_RESPONSE, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        response: type,
+                        timestamp: new Date().toISOString()
+                    })
+                }).then((res)=>{
+                    
+                    console.log('Response sent successfully:', res);
+                        // Show UI response
+                        responseDiv.style.display = 'block';
+                        buttons.style.display = 'none';
+
+                        if (type === 'yes') {
+                            messageBox.style.display = 'block';
+                            avtok.style.display = 'block';
+                            responseDiv.className = 'response success';
+                            responseDiv.innerHTML = '🎊 Cảm ơn Hòa đã phản hồi 🥳🎉<br><br>Lời nhắn đang được gửi đi! 📸✨';
+                            // Show message box after response
+                            setTimeout(() => {
+                                messageBox.style.display = 'block';
+                            }, 800);
+                        } else {
+                            avtng.style.display = 'block';
+                            responseDiv.className = 'response pending';
+                            responseDiv.innerHTML = '🥺 Cảm ơn Hòa đã phản hồi! 🥺<br><br><small>Lời nhắn đang được gửi đi</small>'
+                            setTimeout(() => {
+                                responseDiv.style.display = 'none';
+                                buttons.style.display = 'flex';
+                                buttons.style.pointerEvents = 'auto';
+                                buttons.style.opacity = '1';
+                            }, 5000);
+                        }
+                });
+
+         
+
+                
+
+            } catch (error) {
+                console.error('Error sending response:', error);
+                
+                // Show error message but still proceed with UI
+                responseDiv.style.display = 'block';
+                buttons.style.display = 'none';
+
+                if (type === 'yes') {
+                    responseDiv.className = 'response success';
+                    responseDiv.innerHTML = '🎊 YEAHHHHH! Mình sẽ nhắn tin hẹn bạn liền nàaaa! 🥳🎉<br><br>Chuẩn bị tinh thần "sống ảo" nha! 📸✨<br><small style="color: #999; margin-top: 10px; display: block;">(Lưu ý: Có lỗi khi gửi đến server, nhưng không sao!)</small>';
+                    
+                    setTimeout(() => {
+                        messageBox.style.display = 'block';
+                    }, 800);
+                } else {
+                    responseDiv.className = 'response pending';
+                    responseDiv.innerHTML = '🥺 Ơ mà sao vậyyy... Suy nghĩ thêm đi, nha nhaa! 🥺💕<br><br><small>(Nút vẫn ở đây nếu bạn đổi ý đó! 👀)</small>';
+
+                    setTimeout(() => {
+                        responseDiv.style.display = 'none';
+                        buttons.style.display = 'flex';
+                        buttons.style.pointerEvents = 'auto';
+                        buttons.style.opacity = '1';
+                    }, 5000);
+                }
+            }
+        }
+        function sendMessage() {
+            const messageText = document.getElementById('userMessage').value.trim();
+            const messageSent = document.getElementById('messageSent');
+            const textarea = document.getElementById('userMessage');
+            const sendBtn = document.querySelector('.btn-send');
+
+            if (messageText) {
+                // Store message in memory (you can modify this to send to a server)
+                const response = fetch(API_ENDPOINT_MESSAGE, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: messageText,
+                        timestamp: new Date().toISOString()
+                    })
+                }).then((res)=>{
+                    // Show confirmation
+                    textarea.style.display = 'none';
+                    sendBtn.style.display = 'none';
+                    messageSent.style.display = 'block';
+                });
+                
+                
+            } else {
+               
+            }
+        }   
+    </script>
+</body>
+
+</html>
